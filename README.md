@@ -155,7 +155,20 @@
 </project>
 ```
 ### 5.idea打开settings，在plugins中查找 ebean11，找到Ebean 11 Enhancer，下载后重启idea，然后在工具栏的build中，可以看到Ebean 11 Enhancement，勾选它
-### 6.编写实体类
+### 6.在resources目录下新建数据库配置文件，文件名为ebean.properties，需要注意的是数据库的驱动，我这里是mysql8，所以用的是com.mysql.cj.jdbc.Driver，如果引入的是mysql5的驱动jar，则需要去掉cj，使用com.mysql.jdbc.Driver
+```
+ebean.search.packages= com.demo
+# the name of the default server
+datasource.default=db
+
+## define these in external properties ...
+
+datasource.db.username=root
+datasource.db.password=joker8133xx
+datasource.db.databaseUrl=jdbc:mysql://localhost:3306/springboot_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+datasource.db.databaseDriver=com.mysql.cj.jdbc.Driver
+```
+### 7.编写实体类
 - @Entity声明这是一个数据库实体类
 - @Table中的name指定是哪一张表
 - 继承Model类之后，该类的实例会自动拥有 .save() .delete() .updata()等方法，如果不继承也可以正常使用该实体类，但是少了这些方法
@@ -179,7 +192,7 @@ public class Author extends Model {
     ... 这里省略getter、setter
 }
 ```
-### 7.测试例子
+### 8.测试例子
 ```
 package com.demo.demo;
 
@@ -234,7 +247,7 @@ public class AuthorDemo {
     }
 }
 ```
-### 8.说明
+### 9.说明
 - ebean基本上有以下几种使用方式：
 ##### 一，实体类继承Model类，自带增删改方法；
 ```
@@ -273,7 +286,7 @@ System.out.println(list);
 // int delete = new QAuthor().id.eq(1).delete();
 // System.out.println(delete);
 ```
-### 9.打包编译，需要在pom中添加”maven-assembly-plugin“组件
+### 10.打包编译，需要在pom中添加”maven-assembly-plugin“组件
 - 其中的mainClass需要指定入口函数所在的类
 ```
 <plugin>
@@ -299,4 +312,4 @@ System.out.println(list);
     </executions>
 </plugin>
 ```
-### 10.配置完打包组件后，使用maven的package进行打包，会在target目录下生成两个jar，一个是"项目名.jar"，一个是"项目名-jar-with-dependencies.jar"，第二个jar包就是组件将项目代码以及所有第三方依赖进行打包，打包完后使用 “java -jar xxx.jar” 命令执行第二个jar包就可以将项目运行起来了。
+### 11.配置完打包组件后，使用maven的package进行打包，会在target目录下生成两个jar，一个是"项目名.jar"，一个是"项目名-jar-with-dependencies.jar"，第二个jar包就是组件将项目代码以及所有第三方依赖进行打包，打包完后使用 “java -jar xxx.jar” 命令执行第二个jar包就可以将项目运行起来了。
