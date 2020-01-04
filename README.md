@@ -164,7 +164,7 @@ datasource.default=db
 ## define these in external properties ...
 
 datasource.db.username=root
-datasource.db.password=joker8133xx
+datasource.db.password=
 datasource.db.databaseUrl=jdbc:mysql://localhost:3306/springboot_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
 datasource.db.databaseDriver=com.mysql.cj.jdbc.Driver
 ```
