@@ -155,7 +155,7 @@
 </project>
 ```
 ### 5.idea打开settings，在plugins中查找 ebean11，找到Ebean 11 Enhancer，下载后重启idea，然后在工具栏的build中，可以看到Ebean 11 Enhancement，勾选它
-### 6.在resources目录下新建数据库配置文件，文件名为ebean.properties，需要注意的是数据库的驱动，我这里是mysql8，所以用的是com.mysql.cj.jdbc.Driver，如果引入的是mysql5的驱动jar，则需要去掉cj，使用com.mysql.jdbc.Driver
+### 6.在resources目录下新建数据库配置文件，文件名为ebean.properties，ebean默认会查找该文件名的配置文件；需要注意的是数据库的驱动，我这里是mysql8，所以用的是com.mysql.cj.jdbc.Driver，如果引入的是mysql5的驱动jar，则需要去掉cj，使用com.mysql.jdbc.Driver
 ```
 ebean.search.packages= com.demo
 # the name of the default server
